@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feedback Board</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Public feedback board with upvotes, filters, and comments">
+</head>
+<body>
+  <header class="container header">
+    <h1>Feedback Board</h1>
+    <div class="controls">
+      <div class="control">
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter">
+          <option value="all">All</option>
+          <option value="feature">Feature</option>
+          <option value="bug">Bug</option>
+          <option value="improvement">Improvement</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="sortSelect">Sort</label>
+        <select id="sortSelect">
+          <option value="most">Most Upvoted</option>
+          <option value="recent">Recent</option>
+        </select>
+      </div>
+      <div class="control search">
+        <label for="searchInput">Search</label>
+        <input id="searchInput" type="search" placeholder="Search title or description" />
+      </div>
+    </div>
+  </header>
+
+  <main class="container grid">
+    <section class="form-card">
+      <h2>Submit Feedback</h2>
+      <form id="feedbackForm">
+        <div class="form-field">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" required maxlength="120" placeholder="Short summary" />
+        </div>
+        <div class="form-field">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="3" placeholder="Add more details (optional)"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="feature">Feature</option>
+            <option value="bug">Bug</option>
+            <option value="improvement">Improvement</option>
+          </select>
+        </div>
+        <button type="submit" class="btn primary">Submit</button>
+        <p id="formMessage" class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="list">
+      <h2>Feedbacks</h2>
+      <div id="feedbackList" class="cards"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>Built for the mini task • No auth • SQLite + Express</p>
+  </footer>
+
+  <script src="/app.js" defer></script>
+  
+</body>
+<!--
+  Tip: To prevent multiple upvotes, this app uses localStorage on the client.
+-->
+</html>
+
+
